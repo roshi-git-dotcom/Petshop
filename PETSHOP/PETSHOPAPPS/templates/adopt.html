@@ -1,0 +1,283 @@
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <link rel="stylesheet" href="cus.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+<style>
+     /* body{ 
+      background-image: url("{% static 'images/user back.jpg' %}") ;
+  
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+     */
+    .vh-100 gradient-custom{
+      backface-visibility: hidden;
+    }
+    .fa {
+  padding: 10px;
+  font-size: 10px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 1px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    color: #000;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+    .footer {
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:black;
+  color: white;
+  text-align: center;
+    }
+    .card{
+      justify-content: center;
+      margin-right: 10px;
+      margin-bottom: 20px;
+      height: 650px;
+      padding-top: 0px;
+
+    }
+</style>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="C:\Users\uotec\OneDrive\Desktop\Reez\PETSHOP\PETSHOPAPPS\static\images\logo.jpg"id="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <h2 class="navbar-brand brand-name">
+            <a href="home.html"><img class="img-responsive2"       
+            src="">PetShop</a>
+        </h2>
+        <li class="nav-item">
+          <a class="nav-link" href="home">Home</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login">Login</a>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+  </nav> 
+  
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container mt-3">
+
+    <div class="col" align="center">
+    {% for i in adop_list %}
+   
+      
+    <div class ="col-md-6"style="padding:2%"align="center">
+      <div class="card"style="...">
+        <img alt="card image cap"class="card-img-top"src="{{i.image.url}}"height="500">
+        <div class="card-body">
+
+          <table class="row">
+            <!-- <tr>
+              <th>
+                {% if i.image %}
+                <td>
+                  <img src="{{i.image.url}}"class="card-img-top">
+                </td>
+                {% endif %}
+              </th>
+            </tr> -->
+
+            <tr>
+              <th>Name</th>
+              <td>{{i.name}}</td>
+            </tr>
+            
+            <tr>
+              <th>Breed</th>
+              <td>{{i.breed}}</td>
+            </tr>
+            
+            <tr>
+              <th>Age</th>
+              <td>{{i.age}}</td>
+            </tr>
+            
+            <tr>
+              <th>Colour</th>
+              <td>{{i.colour}}</td>
+            </tr>
+            
+            <tr>
+              <th>Number</th>
+              <td>{{i.number}}</td>
+            </tr>
+            
+            <tr>
+              <th>City</th>
+              <td>{{i.city}}</td>
+            </tr>
+            
+            <tr>
+              <th>District</th>
+              <td>{{i.district}}</td>
+            </tr>
+            
+            <tr>
+              <th>Price</th>
+              <td>{{i.price}}</td>
+            </tr>
+            <tr>
+              <td><a href="adoptcus"class="btn btn-primary"role="button">Adopt</a></td>
+            </tr>
+          </table>
+        </p>
+          <!-- <h5 class="card-title"> {{i.name}}</h5>
+          <h5 class="card-title">{{i.age}}</h5>
+          <h5 class="card-title">{{i.breed}}</h5>
+          <h5 class="card-title">{{i.colour}}</h5>
+          <h5 class="card-title">{{i.number}}</h5>
+          <h5 class="card-title">{{i.city}}</h5>
+          <h5 class="card-title">{{i.district}}</h5>
+          <h5 class="card-title">{{i.state}}</h5>
+        </div> 
+            <a class="btn btn-primary"href="adoptcus">Adopt</a>  -->
+      </div>
+    </div>
+  </div>
+ 
+
+{% endfor %}
+
+</div>
+{% endblock %}
+
+<div class="footer">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="#" class="fa fa-youtube"></a>
+  <a href="#" class="fa fa-instagram"></a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row row-col-auto my-5">
+  {% for i in log %}
+    <div class="card ms-3"style="width:400px">
+      <div class="card-body">
+          <h4 class="card-title">Details</h4>
+          <p class="card-text">
+   
+      </div>      
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+<!-- <table class="table table-striped mx-5">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Breed</th>
+      <th scope="col">Age</th>
+      <th scope="col">Colour</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">City</th>
+      <th scope="col">District</th>
+      <th scope="col">State</th>
+      <th scope="col">file</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{log.name}}</td>
+      <td>{{log.breed}}</td>
+      <td>{{log.age}}</td>
+      <td>{{log.colour}}</td>
+      <td>{{log.number}}</td>
+      <td>{{log.city}}</td>
+      <td>{{log.district}}</td>
+      <td>{{log.state}}</td>
+      <td>{{log.file}}</td>
+       -->
+      <!-- <td><button type="sumbit"class="btn btn-success"><a 
+        href="update"class="text-decoration-none text-white">Update</a></button></td>
+        <td><button type="submit"class="btn btn-warning"><a href="delete"
+          class="text-decoration-none text-white">Delete</a></button></td> -->
+
+    <!-- </tr>
+  </tbody>
+</table>
+<a href="{% url 'give' %}"><button type="button"class="btn btn-primary btn-block mb-4">for new user</button></a>
+<button type="submit"class="btn btn-danger"><a href="{% url 'login' %}"class="text-decoration-none text-white">Logout</a></button>   -->
+
+
+</form>
+</body>
+</html>
